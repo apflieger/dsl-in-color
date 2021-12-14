@@ -12,6 +12,12 @@
 - [ ] Set the [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html).
 - [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
 
+<!-- Plugin description -->
+
+This plugin is working for [html-dsl](https://github.com/apflieger/html-dsl)
+
+<!-- Plugin description end -->
+
 ## Installation
 
 - Using IDE built-in plugin system:

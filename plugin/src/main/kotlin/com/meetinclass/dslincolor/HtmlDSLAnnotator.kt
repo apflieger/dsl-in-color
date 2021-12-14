@@ -16,7 +16,7 @@ class HtmlDSLAnnotator : Annotator {
         ) {
             val psiMethod = element.resolveMethod()
             if (psiMethod != null) {
-                val annotationValue = AnnotationUtil.findAnnotation(psiMethod, NAMED_COLOR)
+                val annotationValue = AnnotationUtil.findAnnotation(psiMethod, NAMED_COLOR_ANNOTATION)
                     ?.findAttributeValue("value")
                 if (annotationValue != null) {
                     if (annotationValue.text == "\"html-dsl-tag\"") {
@@ -36,7 +36,10 @@ class HtmlDSLAnnotator : Annotator {
                         .forEachIndexed { idx, it ->
                             if (it is PsiLiteralExpression) {
                                 val parameterAnnotation =
-                                    AnnotationUtil.findAnnotation(psiMethod.parameterList.parameters[idx], NAMED_COLOR)
+                                    AnnotationUtil.findAnnotation(
+                                        psiMethod.parameterList.parameters[idx],
+                                        NAMED_COLOR_ANNOTATION
+                                    )
                                         ?.findAttributeValue("value")
                                 if (parameterAnnotation != null) {
                                     if (parameterAnnotation.text == "\"html-dsl-attribute\"") {
@@ -54,6 +57,6 @@ class HtmlDSLAnnotator : Annotator {
     }
 
     companion object {
-        const val NAMED_COLOR = "com.meetinclass.html.NamedColor"
+        val NAMED_COLOR_ANNOTATION: String = com.meetinclass.html.color.NamedColor::class.java.name
     }
 }

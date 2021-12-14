@@ -44,7 +44,6 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
-          distribution: zulu
           java-version: 11
           cache: gradle
 
@@ -66,19 +65,11 @@ jobs:
           echo "::set-output name=changelog::$CHANGELOG"
           echo "::set-output name=pluginVerifierHomeDir::~/.pluginVerifier"
 
-          ./gradlew listProductsReleases # prepare list of IDEs for Plugin Verifier
+          ./gradlew :plugin:listProductsReleases # prepare list of IDEs for Plugin Verifier
 
       # Run tests
       - name: Run Tests
-        run: ./gradlew test
-
-      # Collect Tests Result of failed tests
-      - name: Collect Tests Result
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: tests-result
-          path: ${{ github.workspace }}/build/reports/tests
+        run: ./gradlew :plugin:buildPlugin
 
       # Cache Plugin Verifier IDEs
       - name: Setup Plugin Verifier IDEs Cache
@@ -89,7 +80,7 @@ jobs:
 
       # Run Verify Plugin task and IntelliJ Plugin Verifier tool
       - name: Run Plugin Verification tasks
-        run: ./gradlew runPluginVerifier -Pplugin.verifier.home.dir=${{ steps.properties.outputs.pluginVerifierHomeDir }}
+        run: ./gradlew :plugin:runPluginVerifier -Pplugin.verifier.home.dir=${{ steps.properties.outputs.pluginVerifierHomeDir }}
 
       # Collect Plugin Verifier Result
       - name: Collect Plugin Verifier Result
@@ -97,14 +88,14 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: pluginVerifier-result
-          path: ${{ github.workspace }}/build/reports/pluginVerifier
+          path: ${{ github.workspace }}/plugin/build/reports/pluginVerifier
 
       # Prepare plugin archive content for creating artifact
       - name: Prepare Plugin Artifact
         id: artifact
         shell: bash
         run: |
-          cd ${{ github.workspace }}/build/distributions
+          cd ${{ github.workspace }}/plugin/build/distributions
           FILENAME=`ls *.zip`
           unzip "$FILENAME" -d content
 
@@ -115,7 +106,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: ${{ steps.artifact.outputs.filename }}
-          path: ./build/distributions/content/*/*
+          path: ./plugin/build/distributions/content/*/*
 
   # Prepare a draft release for GitHub Releases page for the manual verification
   # If accepted and published, release workflow would be triggered
