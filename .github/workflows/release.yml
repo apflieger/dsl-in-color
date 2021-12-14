@@ -52,6 +52,12 @@ jobs:
         run: |
           ./gradlew :plugin:patchChangelog --release-note="$CHANGELOG"
 
+      # Publish the annotation to the GitHub Packages
+      - name: Publish to the GitHub Packages
+        run: ./gradlew :annotation:publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       # Publish the plugin to the Marketplace
       - name: Publish Plugin
         env:
