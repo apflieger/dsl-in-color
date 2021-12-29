@@ -1,4 +1,4 @@
-package com.meetinclass.html.color;
+package com.meetinclass.dslincolor.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;

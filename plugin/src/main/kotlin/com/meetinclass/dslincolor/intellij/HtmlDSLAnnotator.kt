@@ -1,4 +1,4 @@
-package com.meetinclass.dslincolor
+package com.meetinclass.dslincolor.intellij
 
 import com.intellij.codeInsight.AnnotationUtil
 import com.intellij.lang.annotation.AnnotationHolder
@@ -6,8 +6,8 @@ import com.intellij.lang.annotation.Annotator
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.*
-import com.meetinclass.dslincolor.ColorEx.GREEN
-import com.meetinclass.dslincolor.ColorEx.YELLOW
+import com.meetinclass.dslincolor.intellij.ColorEx.GREEN
+import com.meetinclass.dslincolor.intellij.ColorEx.YELLOW
 
 class HtmlDSLAnnotator : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
@@ -57,6 +57,6 @@ class HtmlDSLAnnotator : Annotator {
     }
 
     companion object {
-        val NAMED_COLOR_ANNOTATION: String = com.meetinclass.html.color.NamedColor::class.java.name
+        val NAMED_COLOR_ANNOTATION: String = com.meetinclass.dslincolor.annotations.NamedColor::class.java.name
     }
 }

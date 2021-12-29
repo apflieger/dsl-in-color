@@ -23,8 +23,8 @@ publishing {
 
     publications {
         create<MavenPublication>("maven") {
-            groupId = "com.meetinclass"
-            artifactId = "annotation-in-html"
+            groupId = "com.meetinclass.dslincolor"
+            artifactId = "annotations"
             version = properties("pluginVersion")
 
             from(components["java"])

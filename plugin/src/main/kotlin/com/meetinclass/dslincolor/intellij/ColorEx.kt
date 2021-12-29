@@ -1,4 +1,4 @@
-package com.meetinclass.dslincolor
+package com.meetinclass.dslincolor.intellij
 
 import java.awt.Color
 

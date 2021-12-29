@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.meetinclass.dslincolor</id>
-    <name>dsl-in-color</name>
+    <name>DSL in Color</name>
     <vendor>izhangzhihao</vendor>
 
     <depends>com.intellij.modules.platform</depends>
@@ -9,6 +9,6 @@
     <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <annotator language="JAVA" implementationClass="com.meetinclass.dslincolor.HtmlDSLAnnotator"/>
+        <annotator language="JAVA" implementationClass="com.meetinclass.dslincolor.intellij.HtmlDSLAnnotator"/>
     </extensions>
 </idea-plugin>
