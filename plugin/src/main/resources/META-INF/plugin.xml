@@ -10,5 +10,11 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <annotator language="JAVA" implementationClass="com.meetinclass.dslincolor.intellij.HtmlDSLAnnotator"/>
+        <colorAndFontPanelFactory
+                implementation="com.meetinclass.dslincolor.intellij.setting.ColorPageFactory"/>
+        <colorAndFontDescriptorProvider
+                implementation="com.meetinclass.dslincolor.intellij.setting.ColorPageFactory"/>
+        <additionalTextAttributes scheme="Default" file="colorSchemes/dsl-color-default.xml"/>
+        <additionalTextAttributes scheme="Darcula" file="colorSchemes/dsl-color-default.xml"/>
     </extensions>
 </idea-plugin>

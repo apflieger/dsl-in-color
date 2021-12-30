@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<list>
+    <option name="html-dsl-attribute">
+        <value>
+            <option name="FOREGROUND" value="A5C261" />
+        </value>
+    </option>
+    <option name="html-dsl-tag">
+        <value>
+            <option name="FOREGROUND" value="FFC66D" />
+        </value>
+    </option>
+</list>
