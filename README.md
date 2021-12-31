@@ -9,9 +9,13 @@
 - [ ] Set the [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html).
 
 <!-- Plugin description -->
+DSL in Color allow to define a domain specific color theme for your Java code.
 
-This plugin is working for [html-dsl](https://github.com/apflieger/html-dsl)
+How it works:
 
+1. Add a dependency on the annotation library that we provide
+2. Add annotations @NamedColor("...") on your methods, parameters or types
+3. Configure the plugin to associate these names to colors that you want
 <!-- Plugin description end -->
 
 ## Installation
