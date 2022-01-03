@@ -10,6 +10,9 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <annotator language="JAVA" implementationClass="com.meetinclass.dslincolor.intellij.HtmlDSLAnnotator"/>
+        <applicationConfigurable instance="com.meetinclass.dslincolor.intellij.setting.DslInColorConfigurable"/>
+        <applicationService
+                serviceImplementation="com.meetinclass.dslincolor.intellij.setting.DslInColorSettings"/>
         <colorAndFontPanelFactory
                 implementation="com.meetinclass.dslincolor.intellij.setting.ColorPageFactory"/>
         <colorAndFontDescriptorProvider

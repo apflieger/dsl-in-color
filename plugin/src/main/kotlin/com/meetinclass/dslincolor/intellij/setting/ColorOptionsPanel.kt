@@ -146,10 +146,7 @@ class ColorOptionsPanel(
         }
     }
 
-    override fun processListOptions(): MutableSet<String> = mutableSetOf(
-        HtmlDSLAnnotator.HTML_DSL_TAG,
-        HtmlDSLAnnotator.HTML_DSL_ATTR
-    )
+    override fun processListOptions(): MutableSet<String> = mutableSetOf()
 
     override fun showOption(option: String): Runnable = Runnable {
         optionsTree.selectOptionByRainbowName(option)

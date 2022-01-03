@@ -32,20 +32,17 @@ class ColorPageFactory : ColorAndFontPanelFactory, ColorAndFontDescriptorsProvid
         return NewColorAndFontPanel(schemesPanel, optionsPanel, emptyPreview, DSL_IN_COLOR_GROUP, null, null)
     }
 
-    override fun getAttributeDescriptors(): Array<AttributesDescriptor> = ATTRIBUTE_DESCRIPTORS
+    override fun getAttributeDescriptors(): Array<AttributesDescriptor> =
+        DslInColorSettings.instance.annotationList.map {
+            createDescriptors(it)
+        }.toTypedArray()
 
     override fun getColorDescriptors(): Array<ColorDescriptor> = emptyArray()
 
     companion object {
         private const val DSL_IN_COLOR_GROUP = "DSL in Color"
-        private val ATTRIBUTE_DESCRIPTORS: Array<AttributesDescriptor> by lazy {
-            createDescriptors("html-dsl-tag") +
-                    createDescriptors("html-dsl-attribute")
-        }
-
-        private fun createDescriptors(name: String): Array<AttributesDescriptor> = arrayOf(
+        private fun createDescriptors(name: String): AttributesDescriptor =
             AttributesDescriptor(name, TextAttributesKey.createTextAttributesKey(name))
-        )
     }
 
 }
