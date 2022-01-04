@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable
 
 @State(name = "DslInColorSettings", storages = [(Storage("dsl_in_color.xml"))])
 class DslInColorSettings : PersistentStateComponent<DslInColorSettings> {
-    var annotationList: Set<String> = setOf("html-dsl-tag", "html-dsl-attribute")
+    var annotationList: Set<String> = setOf()
 
     @Nullable
     override fun getState() = this
