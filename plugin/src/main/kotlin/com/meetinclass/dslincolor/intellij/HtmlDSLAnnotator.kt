@@ -23,7 +23,7 @@ class HtmlDSLAnnotator : Annotator {
                 val annotationValue = AnnotationUtil.findAnnotation(psiMethod, NAMED_COLOR_ANNOTATION)
                     ?.findAttributeValue("value")
                 if (annotationValue != null) {
-                    colorify(holder, element, annotationValue.text)
+                    colorify(holder, element.methodExpression, annotationValue.text)
                     element.argumentList.expressions
                         .forEachIndexed { idx, it ->
                             if (it is PsiLiteralExpression) {
@@ -34,7 +34,7 @@ class HtmlDSLAnnotator : Annotator {
                                     )
                                         ?.findAttributeValue("value")
                                 if (parameterAnnotation != null) {
-                                    colorify(holder, element, parameterAnnotation.text)
+                                    colorify(holder, it, parameterAnnotation.text)
                                 }
                             }
                         }
@@ -60,12 +60,12 @@ class HtmlDSLAnnotator : Annotator {
 
         private fun colorify(
             holder: AnnotationHolder,
-            element: PsiMethodCallExpression,
+            element: PsiElement,
             annotationValue: String
         ) {
             val scheme = EditorColorsManager.getInstance().globalScheme
             holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
-                .range(element.methodExpression)
+                .range(element)
                 .enforcedTextAttributes(
                     TextAttributes(
                         scheme.getColorByAnnotationValue(annotationValue),
